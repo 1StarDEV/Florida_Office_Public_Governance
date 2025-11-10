@@ -311,7 +311,7 @@
         }
         
         .application-container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: var(--white);
             border-radius: 10px;
@@ -333,6 +333,25 @@
         
         .application-body {
             padding: 40px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--light-alt);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent);
         }
         
         .form-group {
@@ -636,6 +655,32 @@
             margin-bottom: 20px;
         }
         
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: var(--light-alt);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: right;
+            margin-top: 5px;
+            font-size: 14px;
+            color: var(--primary-dark);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-top {
@@ -771,8 +816,8 @@
                 </div>
                 <div class="process-step animate-slideUp">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Interview</h3>
-                    <p>Selected candidates will be invited for an interview with the selection committee.</p>
+                    <h3 class="step-title">Follow-up Questions</h3>
+                    <p>Selected candidates will receive additional questions to assess their suitability.</p>
                 </div>
                 <div class="process-step animate-slideInRight">
                     <div class="step-number">4</div>
@@ -792,65 +837,248 @@
                     <p>Complete all fields below to submit your application</p>
                 </div>
                 <div class="application-body">
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">0% Complete</div>
+                    </div>
+                    
                     <form id="governorApplication">
-                        <div class="form-row">
-                            <div class="form-col">
-                                <div class="form-group">
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" id="firstName" class="form-control" required>
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-user"></i> Personal Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" id="firstName" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" id="lastName" class="form-control" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-col">
-                                <div class="form-group">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" id="lastName" class="form-control" required>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address" class="form-label">Residential Address</label>
+                                <input type="text" id="address" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" id="city" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-col">
+                                    <div class="form-group">
+                                        <label for="zipCode" class="form-label">ZIP Code</label>
+                                        <input type="text" id="zipCode" class="form-control" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="address" class="form-label">Residential Address</label>
-                            <input type="text" id="address" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-col">
-                                <div class="form-group">
-                                    <label for="city" class="form-label">City</label>
-                                    <input type="text" id="city" class="form-control" required>
-                                </div>
+                        <!-- Discord Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fab fa-discord"></i> Discord Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="discordId" class="form-label">Discord ID</label>
+                                <input type="text" id="discordId" class="form-control" required placeholder="e.g., 123456789012345678">
                             </div>
-                            <div class="form-col">
-                                <div class="form-group">
-                                    <label for="zipCode" class="form-label">ZIP Code</label>
-                                    <input type="text" id="zipCode" class="form-control" required>
-                                </div>
+                            
+                            <div class="form-group">
+                                <label for="discordUser" class="form-label">Discord Username</label>
+                                <input type="text" id="discordUser" class="form-control" required placeholder="e.g., username#1234">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="discordActivity" class="form-label">How active are you on Discord? (Hours per week)</label>
+                                <input type="number" id="discordActivity" class="form-control" required min="1" max="168">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="discordExperience" class="form-label">Describe your experience with Discord communities and servers</label>
+                                <textarea id="discordExperience" class="form-control" required></textarea>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="experience" class="form-label">Political/Leadership Experience</label>
-                            <textarea id="experience" class="form-control" required></textarea>
+                        <!-- Roblox Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-gamepad"></i> Roblox Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="robloxId" class="form-label">Roblox ID</label>
+                                <input type="text" id="robloxId" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="robloxUser" class="form-label">Roblox Username</label>
+                                <input type="text" id="robloxUser" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="robloxExperience" class="form-label">How long have you been playing on Roblox?</label>
+                                <input type="text" id="robloxExperience" class="form-control" required placeholder="e.g., 3 years">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="robloxGovExperience" class="form-label">Describe your experience with government RP on Roblox</label>
+                                <textarea id="robloxGovExperience" class="form-control" required></textarea>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="platform" class="form-label">Governance Platform</label>
-                            <textarea id="platform" class="form-control" required placeholder="Describe your vision for Florida and key policy priorities"></textarea>
+                        <!-- Leadership Questions Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-users"></i> Leadership Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="leadershipStyle" class="form-label">Describe your leadership style and philosophy</label>
+                                <textarea id="leadershipStyle" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="teamManagement" class="form-label">How do you approach team management and delegation?</label>
+                                <textarea id="teamManagement" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="conflictResolution" class="form-label">Describe your approach to conflict resolution</label>
+                                <textarea id="conflictResolution" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="decisionMaking" class="form-label">How do you make important decisions under pressure?</label>
+                                <textarea id="decisionMaking" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motivation" class="form-label">What motivates you to take on leadership roles?</label>
+                                <textarea id="motivation" class="form-control" required></textarea>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="qualifications" class="form-label">Qualifications</label>
-                            <textarea id="qualifications" class="form-control" required placeholder="What makes you qualified to be Governor of Florida?"></textarea>
+                        <!-- Government & State Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-landmark"></i> Government & State Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="vision" class="form-label">What is your vision for the state of Florida?</label>
+                                <textarea id="vision" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priorities" class="form-label">What would be your top 3 priorities as Governor?</label>
+                                <textarea id="priorities" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="policyChanges" class="form-label">What specific policy changes would you implement?</label>
+                                <textarea id="policyChanges" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budgetManagement" class="form-label">How would you approach state budget management?</label>
+                                <textarea id="budgetManagement" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="transparency" class="form-label">How would you ensure government transparency and accountability?</label>
+                                <textarea id="transparency" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Situational Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Situational Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="crisisManagement" class="form-label">Describe how you would handle a state-wide crisis (natural disaster, economic downturn, etc.)</label>
+                                <textarea id="crisisManagement" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="opposition" class="form-label">How would you work with political opposition to achieve common goals?</label>
+                                <textarea id="opposition" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="unpopularDecision" class="form-label">How would you handle making an unpopular but necessary decision?</label>
+                                <textarea id="unpopularDecision" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ethicalDilemma" class="form-label">Describe how you would handle an ethical dilemma in government</label>
+                                <textarea id="ethicalDilemma" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="publicCriticism" class="form-label">How do you handle public criticism and maintain composure?</label>
+                                <textarea id="publicCriticism" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-brain"></i> Advanced Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="constitutionalKnowledge" class="form-label">What is your understanding of the Florida Constitution and its relevance to the Governor's role?</label>
+                                <textarea id="constitutionalKnowledge" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="longTermPlanning" class="form-label">How do you approach long-term strategic planning for the state?</label>
+                                <textarea id="longTermPlanning" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="intergovernmental" class="form-label">How would you manage relationships with federal and local governments?</label>
+                                <textarea id="intergovernmental" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="innovation" class="form-label">What innovative approaches would you bring to state governance?</label>
+                                <textarea id="innovation" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="legacy" class="form-label">What legacy would you want to leave as Governor of Florida?</label>
+                                <textarea id="legacy" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="challenges" class="form-label">What do you see as the biggest challenges facing Florida, and how would you address them?</label>
+                                <textarea id="challenges" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="successMetrics" class="form-label">How would you measure the success of your administration?</label>
+                                <textarea id="successMetrics" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="personalGrowth" class="form-label">What areas do you feel you need to grow in to be an effective Governor?</label>
+                                <textarea id="personalGrowth" class="form-control" required></textarea>
+                            </div>
                         </div>
                         
                         <button type="submit" class="submit-btn animate-pulse" id="submitBtn">
@@ -873,10 +1101,9 @@
                 <div class="footer-column">
                     <h3>Application Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-file-pdf"></i> Application Guidelines</a></li>
-                        <li><a href="#"><i class="fas fa-gavel"></i> Eligibility Requirements</a></li>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> Application Timeline</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationGL"><i class="fas fa-file-pdf"></i> Application Guidelines</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationER"><i class="fas fa-gavel"></i> Eligibility Requirements</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationFAQ"><i class="fas fa-question-circle"></i> FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -947,6 +1174,30 @@
         setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call
         
+        // Progress Tracking
+        function updateProgress() {
+            const form = document.getElementById('governorApplication');
+            const inputs = form.querySelectorAll('input, textarea');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            let filledCount = 0;
+            inputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    filledCount++;
+                }
+            });
+            
+            const progress = Math.min(100, Math.round((filledCount / inputs.length) * 100));
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `${progress}% Complete`;
+        }
+        
+        // Add event listeners to all form inputs
+        document.querySelectorAll('#governorApplication input, #governorApplication textarea').forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+        
         // Form Submission
         document.getElementById('governorApplication').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -957,6 +1208,7 @@
             
             // Collect form data
             const formData = {
+                // Personal Information
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
@@ -964,9 +1216,50 @@
                 address: document.getElementById('address').value,
                 city: document.getElementById('city').value,
                 zipCode: document.getElementById('zipCode').value,
-                experience: document.getElementById('experience').value,
-                platform: document.getElementById('platform').value,
-                qualifications: document.getElementById('qualifications').value,
+                
+                // Discord Information
+                discordId: document.getElementById('discordId').value,
+                discordUser: document.getElementById('discordUser').value,
+                discordActivity: document.getElementById('discordActivity').value,
+                discordExperience: document.getElementById('discordExperience').value,
+                
+                // Roblox Information
+                robloxId: document.getElementById('robloxId').value,
+                robloxUser: document.getElementById('robloxUser').value,
+                robloxExperience: document.getElementById('robloxExperience').value,
+                robloxGovExperience: document.getElementById('robloxGovExperience').value,
+                
+                // Leadership Questions
+                leadershipStyle: document.getElementById('leadershipStyle').value,
+                teamManagement: document.getElementById('teamManagement').value,
+                conflictResolution: document.getElementById('conflictResolution').value,
+                decisionMaking: document.getElementById('decisionMaking').value,
+                motivation: document.getElementById('motivation').value,
+                
+                // Government & State Questions
+                vision: document.getElementById('vision').value,
+                priorities: document.getElementById('priorities').value,
+                policyChanges: document.getElementById('policyChanges').value,
+                budgetManagement: document.getElementById('budgetManagement').value,
+                transparency: document.getElementById('transparency').value,
+                
+                // Situational Questions
+                crisisManagement: document.getElementById('crisisManagement').value,
+                opposition: document.getElementById('opposition').value,
+                unpopularDecision: document.getElementById('unpopularDecision').value,
+                ethicalDilemma: document.getElementById('ethicalDilemma').value,
+                publicCriticism: document.getElementById('publicCriticism').value,
+                
+                // Advanced Questions
+                constitutionalKnowledge: document.getElementById('constitutionalKnowledge').value,
+                longTermPlanning: document.getElementById('longTermPlanning').value,
+                intergovernmental: document.getElementById('intergovernmental').value,
+                innovation: document.getElementById('innovation').value,
+                legacy: document.getElementById('legacy').value,
+                challenges: document.getElementById('challenges').value,
+                successMetrics: document.getElementById('successMetrics').value,
+                personalGrowth: document.getElementById('personalGrowth').value,
+                
                 timestamp: new Date().toISOString()
             };
             
@@ -985,16 +1278,20 @@
                             value: `Email: ${formData.email}\nPhone: ${formData.phone}\nAddress: ${formData.address}, ${formData.city}, FL ${formData.zipCode}`
                         },
                         {
-                            name: "Experience",
-                            value: formData.experience.length > 1024 ? formData.experience.substring(0, 1021) + "..." : formData.experience
+                            name: "Discord Information",
+                            value: `ID: ${formData.discordId}\nUsername: ${formData.discordUser}\nActivity: ${formData.discordActivity} hours/week`
                         },
                         {
-                            name: "Platform",
-                            value: formData.platform.length > 1024 ? formData.platform.substring(0, 1021) + "..." : formData.platform
+                            name: "Roblox Information",
+                            value: `ID: ${formData.robloxId}\nUsername: ${formData.robloxUser}\nExperience: ${formData.robloxExperience}`
                         },
                         {
-                            name: "Qualifications",
-                            value: formData.qualifications.length > 1024 ? formData.qualifications.substring(0, 1021) + "..." : formData.qualifications
+                            name: "Leadership Style",
+                            value: formData.leadershipStyle.length > 1024 ? formData.leadershipStyle.substring(0, 1021) + "..." : formData.leadershipStyle
+                        },
+                        {
+                            name: "Vision for Florida",
+                            value: formData.vision.length > 1024 ? formData.vision.substring(0, 1021) + "..." : formData.vision
                         },
                         {
                             name: "Submitted",
@@ -1019,6 +1316,7 @@
                     
                     // Reset form
                     document.getElementById('governorApplication').reset();
+                    updateProgress();
                 } else {
                     throw new Error('Failed to submit application');
                 }
@@ -1081,6 +1379,9 @@
                 e.preventDefault();
             }
         });
+        
+        // Initialize progress bar
+        updateProgress();
     </script>
 </body>
 </html>
