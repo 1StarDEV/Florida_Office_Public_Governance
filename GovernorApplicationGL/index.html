@@ -187,57 +187,6 @@
             transform: translateY(-2px);
         }
         
-        /* Navigation */
-        nav {
-            background-color: rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-right: 25px;
-        }
-        
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: #D2B48C;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: #D2B48C;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a.active {
-            color: #D2B48C;
-        }
-        
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(139, 115, 85, 0.8), rgba(107, 92, 67, 0.9)), url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80');
@@ -449,6 +398,33 @@
             margin-bottom: 10px;
         }
         
+        /* Reviewer Section */
+        .reviewer-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--white);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .reviewer-card h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .reviewer-badge {
+            background: var(--accent);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary-dark);
@@ -568,15 +544,6 @@
                 margin-bottom: 15px;
             }
             
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links li {
-                margin: 5px 10px;
-            }
-            
             .hero h1 {
                 font-size: 36px;
             }
@@ -616,14 +583,6 @@
                 </div>
                 <div class="official-badge">APPLICATION GUIDELINES</div>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#" class="active">Guidelines</a></li>
-                    <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationER">Requirements</a></li>
-                    <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationFAQ">FAQ</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -653,9 +612,48 @@
                             <p>Welcome to the Florida Governor Application process. These guidelines are designed to help you understand the application requirements, submission process, and evaluation criteria. Please read this document carefully before starting your application.</p>
                         </div>
                         
+                        <div class="reviewer-card">
+                            <div class="reviewer-badge">APPLICATION REVIEWER</div>
+                            <h3>Jason "Star" Shepherd</h3>
+                            <p>State Executive Director & Head of Department</p>
+                            <p>With over 8 years of real-world leadership experience</p>
+                        </div>
+                        
                         <div class="info-box">
                             <h3><i class="fas fa-lightbulb"></i> Important Note</h3>
                             <p>This application is for a roleplay community. All information provided should be appropriate for this context. We value creativity, dedication, and a genuine interest in contributing to our community.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Policy Section -->
+                    <div class="guideline-section">
+                        <h2 class="section-title"><i class="fas fa-robot"></i> AI & Assistance Policy</h2>
+                        
+                        <div class="warning-box">
+                            <h3><i class="fas fa-ban"></i> STRICTLY PROHIBITED</h3>
+                            <p><strong>Using any AI tools, writing assistants, or external sources to help answer questions or improve your text is strictly forbidden and will result in immediate department blacklisting.</strong></p>
+                            <p>All applications must be your own original work. We can detect AI-generated content, and any attempt to use such tools will permanently disqualify you from all future department applications and activities.</p>
+                        </div>
+                        
+                        <div class="guideline-card">
+                            <h3><i class="fas fa-check-circle"></i> What's Allowed</h3>
+                            <ul class="guideline-list">
+                                <li>Your own original thoughts and writing</li>
+                                <li>Basic spell-checking tools</li>
+                                <li>Thinking through responses before writing</li>
+                                <li>Taking breaks during the application process</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="guideline-card">
+                            <h3><i class="fas fa-times-circle"></i> What's Not Allowed</h3>
+                            <ul class="guideline-list">
+                                <li>AI writing assistants (ChatGPT, Claude, etc.)</li>
+                                <li>Grammar improvement tools beyond basic spelling</li>
+                                <li>Copying content from other sources</li>
+                                <li>Having someone else write your responses</li>
+                                <li>Using templates or pre-written answers</li>
+                            </ul>
                         </div>
                     </div>
                     
@@ -721,7 +719,7 @@
                         
                         <div class="info-box">
                             <h3><i class="fas fa-clock"></i> Application Timeline</h3>
-                            <p>The application period closes on <strong>November 10, 2025 at 7:30 PM EST</strong>. Late submissions will not be accepted. The review process typically takes 2-3 weeks, after which all applicants will be notified of the committee's decision.</p>
+                            <p>The application period closes on <strong>November 10, 2025 at 7:30 PM EST</strong>. Late submissions will not be accepted. The review process typically takes <strong>1-2 hours</strong> after submission, after which all applicants will be notified of the committee's decision.</p>
                         </div>
                     </div>
                     
@@ -731,15 +729,15 @@
                         
                         <div class="guideline-card">
                             <h3><i class="fas fa-user"></i> Personal Information</h3>
-                            <p>Provide accurate personal details including your name and contact information. Phone number is optional but recommended for faster communication.</p>
+                            <p>Provide accurate personal details including your name and contact information. <strong>We only need your phone number or email if critical things happen and we need to get a hold of you through alternative means - otherwise we will contact you through Discord.</strong></p>
                             <div class="info-box">
-                                <p><strong>Tip:</strong> Use an email address you check regularly as this will be our primary method of communication.</p>
+                                <p><strong>Privacy Note:</strong> Your contact information is kept confidential and used only for essential communications related to your application.</p>
                             </div>
                         </div>
                         
                         <div class="guideline-card">
                             <h3><i class="fab fa-discord"></i> Discord Information</h3>
-                            <p>Include your complete Discord ID and username. Be honest about your activity level as this helps us understand your availability.</p>
+                            <p>Include your complete Discord ID and username. Be honest about your activity level as this helps us understand your availability. <strong>This will be our primary method of communication.</strong></p>
                             <div class="info-box">
                                 <p><strong>Note:</strong> Your Discord account will be verified during the review process.</p>
                             </div>
@@ -869,7 +867,7 @@
                         
                         <div class="info-box">
                             <h3><i class="fas fa-balance-scale"></i> Fair Evaluation Process</h3>
-                            <p>All applications are reviewed by a committee of experienced community members. We use a standardized scoring system to ensure fairness and consistency. The committee considers both the content of your responses and your overall fit for the Governor role in our specific community context.</p>
+                            <p>All applications are reviewed by State Executive Director Jason "Star" Shepherd with over 8 years of real-world leadership experience. We use a standardized scoring system to ensure fairness and consistency. The committee considers both the content of your responses and your overall fit for the Governor role in our specific community context.</p>
                         </div>
                     </div>
                     
@@ -885,6 +883,7 @@
                                 <li><strong>Poor grammar/spelling:</strong> Proofread carefully before submitting</li>
                                 <li><strong>Missing deadlines:</strong> Submit before the closing date and time</li>
                                 <li><strong>False information:</strong> Be honest about your experience and background</li>
+                                <li><strong>AI-generated content:</strong> Immediate department blacklist offense</li>
                             </ul>
                         </div>
                         
@@ -896,12 +895,13 @@
                                 <li><strong>Ignoring questions:</strong> Answer what is actually being asked</li>
                                 <li><strong>Copying others:</strong> All responses must be your original work</li>
                                 <li><strong>Inappropriate content:</strong> Maintain professionalism throughout</li>
+                                <li><strong>External assistance:</strong> No AI tools or writing assistants allowed</li>
                             </ul>
                         </div>
                         
                         <div class="warning-box">
                             <h3><i class="fas fa-hand-paper"></i> Automatic Disqualifications</h3>
-                            <p>Applications will be automatically disqualified for: providing false information, plagiarism, inappropriate content, harassment of committee members, or attempting to circumvent the application process.</p>
+                            <p>Applications will be automatically disqualified for: using AI tools or writing assistants, providing false information, plagiarism, inappropriate content, harassment of committee members, or attempting to circumvent the application process.</p>
                         </div>
                     </div>
                     
@@ -912,22 +912,22 @@
                         <div class="guideline-card">
                             <h3><i class="fas fa-envelope"></i> Communication</h3>
                             <ul class="guideline-list">
-                                <li>You will receive an email confirmation upon submission</li>
-                                <li>The review process takes approximately 2-3 weeks</li>
-                                <li>All applicants will be notified of the committee's decision</li>
-                                <li>Selected candidates will be contacted for follow-up interviews</li>
-                                <li>Check your email regularly for updates</li>
+                                <li>Your submission will be posted in our Discord server</li>
+                                <li>The review process takes approximately <strong>1-2 hours</strong></li>
+                                <li>All applicants will be notified of the committee's decision via Discord</li>
+                                <li>Selected candidates will be contacted directly</li>
+                                <li>Check Discord regularly for updates</li>
                             </ul>
                         </div>
                         
                         <div class="guideline-card">
                             <h3><i class="fas fa-comments"></i> Follow-up Process</h3>
                             <ul class="guideline-list">
-                                <li>Selected candidates will participate in a Discord interview</li>
-                                <li>Interviews typically last 20-30 minutes</li>
-                                <li>Be prepared to discuss your application in more detail</li>
-                                <li>Have questions ready about the role and community</li>
-                                <li>Final decisions are communicated via email</li>
+                                <li><strong>No interviews or chat follow-ups</strong> will be conducted</li>
+                                <li>No additional questions will be asked after submission</li>
+                                <li>Your application stands on its own merits</li>
+                                <li>All decisions are final based on your submitted application</li>
+                                <li>Final decisions are communicated via Discord</li>
                             </ul>
                         </div>
                         
@@ -939,7 +939,7 @@
                     
                     <!-- Back to Application Button -->
                     <div class="back-to-app">
-                        <a href="index.html" class="back-btn animate-pulse">
+                        <a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplication" class="back-btn animate-pulse">
                             <i class="fas fa-arrow-left"></i> Back to Application Form
                         </a>
                     </div>
@@ -959,7 +959,7 @@
                 <div class="footer-column">
                     <h3>Application Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Application Home</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplication"><i class="fas fa-home"></i> Application Home</a></li>
                         <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationER"><i class="fas fa-gavel"></i> Eligibility Requirements</a></li>
                         <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationFAQ"><i class="fas fa-question-circle"></i> FAQ</a></li>
                     </ul>
