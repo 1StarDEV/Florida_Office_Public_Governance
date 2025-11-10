@@ -128,6 +128,16 @@
             20%, 40%, 60%, 80% { transform: translateX(20px); }
         }
         
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
         .animate-fadeIn {
             animation: fadeIn 1s ease forwards;
         }
@@ -162,6 +172,14 @@
         
         .animate-screen-shake {
             animation: screenShake 0.5s ease-in-out;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typewriter 3.5s steps(40, end), blink .75s step-end infinite;
         }
         
         /* Header Styles */
@@ -768,6 +786,14 @@
             color: var(--primary-dark);
         }
         
+        /* Character Counter */
+        .char-counter {
+            text-align: right;
+            font-size: 12px;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-top {
@@ -975,14 +1001,14 @@
                                 <div class="form-col">
                                     <div class="form-group">
                                         <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" id="firstName" class="form-control" required data-validation="name">
+                                        <input type="text" id="firstName" class="form-control" required>
                                         <div class="error-message" id="firstNameError">Please enter your first name</div>
                                     </div>
                                 </div>
                                 <div class="form-col">
                                     <div class="form-group">
                                         <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" id="lastName" class="form-control" required data-validation="name">
+                                        <input type="text" id="lastName" class="form-control" required>
                                         <div class="error-message" id="lastNameError">Please enter your last name</div>
                                     </div>
                                 </div>
@@ -990,41 +1016,188 @@
                             
                             <div class="form-group">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-control" required data-validation="email">
+                                <input type="email" id="email" class="form-control" required>
                                 <div class="error-message" id="emailError">Please enter a valid email address</div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" required data-validation="phone">
+                                <input type="tel" id="phone" class="form-control" required>
                                 <div class="error-message" id="phoneError">Please enter a valid phone number</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="address" class="form-label">Residential Address</label>
-                                <input type="text" id="address" class="form-control" required data-validation="address">
-                                <div class="error-message" id="addressError">Please read Application Guidelines and Eligibility Requirements first</div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-col">
-                                    <div class="form-group">
-                                        <label for="city" class="form-label">City</label>
-                                        <input type="text" id="city" class="form-control" required data-validation="city">
-                                        <div class="error-message" id="cityError">Please read Application Guidelines and Eligibility Requirements first</div>
-                                    </div>
-                                </div>
-                                <div class="form-col">
-                                    <div class="form-group">
-                                        <label for="zipCode" class="form-label">ZIP Code</label>
-                                        <input type="text" id="zipCode" class="form-control" required data-validation="zip">
-                                        <div class="error-message" id="zipCodeError">Please read Application Guidelines and Eligibility Requirements first</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         
-                        <!-- Submit Button -->
+                        <!-- Discord Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fab fa-discord"></i> Discord Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="discordId" class="form-label">Discord ID</label>
+                                <input type="text" id="discordId" class="form-control" required placeholder="e.g., 123456789012345678">
+                                <div class="error-message" id="discordIdError">Please enter your Discord ID</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="discordUser" class="form-label">Discord Username</label>
+                                <input type="text" id="discordUser" class="form-control" required placeholder="e.g., username#1234">
+                                <div class="error-message" id="discordUserError">Please enter your Discord username</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="discordActivity" class="form-label">How active are you on Discord? (Hours per week)</label>
+                                <input type="number" id="discordActivity" class="form-control" required min="1" max="168">
+                                <div class="error-message" id="discordActivityError">Please enter your Discord activity</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Roblox Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-gamepad"></i> Roblox Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="robloxId" class="form-label">Roblox ID</label>
+                                <input type="text" id="robloxId" class="form-control" required>
+                                <div class="error-message" id="robloxIdError">Please enter your Roblox ID</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="robloxUser" class="form-label">Roblox Username</label>
+                                <input type="text" id="robloxUser" class="form-control" required>
+                                <div class="error-message" id="robloxUserError">Please enter your Roblox username</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="robloxExperience" class="form-label">How long have you been playing on Roblox?</label>
+                                <input type="text" id="robloxExperience" class="form-control" required placeholder="e.g., 3 years">
+                                <div class="error-message" id="robloxExperienceError">Please enter your Roblox experience</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Leadership Questions Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-users"></i> Leadership Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="leadershipStyle" class="form-label">Describe your leadership style and philosophy</label>
+                                <textarea id="leadershipStyle" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="leadershipStyleCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="leadershipStyleError">Please describe your leadership style</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="teamManagement" class="form-label">How do you approach team management and delegation?</label>
+                                <textarea id="teamManagement" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="teamManagementCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="teamManagementError">Please describe your team management approach</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="conflictResolution" class="form-label">Describe your approach to conflict resolution</label>
+                                <textarea id="conflictResolution" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="conflictResolutionCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="conflictResolutionError">Please describe your conflict resolution approach</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="decisionMaking" class="form-label">How do you make important decisions under pressure?</label>
+                                <textarea id="decisionMaking" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="decisionMakingCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="decisionMakingError">Please describe your decision-making process</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Government & State Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-landmark"></i> Government & State Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="vision" class="form-label">What is your vision for the state of Florida?</label>
+                                <textarea id="vision" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="visionCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="visionError">Please describe your vision for Florida</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priorities" class="form-label">What would be your top 3 priorities as Governor?</label>
+                                <textarea id="priorities" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="prioritiesCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="prioritiesError">Please list your top 3 priorities</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="policyChanges" class="form-label">What specific policy changes would you implement?</label>
+                                <textarea id="policyChanges" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="policyChangesCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="policyChangesError">Please describe specific policy changes</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budgetManagement" class="form-label">How would you approach state budget management?</label>
+                                <textarea id="budgetManagement" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="budgetManagementCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="budgetManagementError">Please describe your budget management approach</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Situational Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Situational Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="crisisManagement" class="form-label">Describe how you would handle a state-wide crisis (natural disaster, economic downturn, etc.)</label>
+                                <textarea id="crisisManagement" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="crisisManagementCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="crisisManagementError">Please describe your crisis management approach</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="opposition" class="form-label">How would you work with political opposition to achieve common goals?</label>
+                                <textarea id="opposition" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="oppositionCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="oppositionError">Please describe your approach to working with opposition</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="unpopularDecision" class="form-label">How would you handle making an unpopular but necessary decision?</label>
+                                <textarea id="unpopularDecision" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="unpopularDecisionCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="unpopularDecisionError">Please describe your approach to unpopular decisions</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Questions -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-brain"></i> Advanced Questions</h3>
+                            
+                            <div class="form-group">
+                                <label for="constitutionalKnowledge" class="form-label">What is your understanding of the Florida Constitution and its relevance to the Governor's role?</label>
+                                <textarea id="constitutionalKnowledge" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="constitutionalKnowledgeCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="constitutionalKnowledgeError">Please describe your constitutional knowledge</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="longTermPlanning" class="form-label">How do you approach long-term strategic planning for the state?</label>
+                                <textarea id="longTermPlanning" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="longTermPlanningCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="longTermPlanningError">Please describe your long-term planning approach</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="innovation" class="form-label">What innovative approaches would you bring to state governance?</label>
+                                <textarea id="innovation" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="innovationCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="innovationError">Please describe your innovative approaches</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="legacy" class="form-label">What legacy would you want to leave as Governor of Florida?</label>
+                                <textarea id="legacy" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="legacyCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="legacyError">Please describe the legacy you want to leave</div>
+                            </div>
+                        </div>
+                        
                         <button type="submit" class="submit-btn animate-pulse" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Submit Application
                         </button>
@@ -1214,38 +1387,24 @@
             progressText.textContent = `${progress}% Complete`;
         }
         
+        // Character Counters
+        function setupCharacterCounters() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                const counterId = `${textarea.id}Count`;
+                const counter = document.getElementById(counterId);
+                
+                if (counter) {
+                    textarea.addEventListener('input', function() {
+                        counter.textContent = this.value.length;
+                    });
+                }
+            });
+        }
+        
         // Add event listeners to all form inputs
         document.querySelectorAll('#governorApplication input, #governorApplication textarea').forEach(input => {
             input.addEventListener('input', updateProgress);
-            
-            // Add validation for address, city, and zip code fields
-            if (input.id === 'address' || input.id === 'city' || input.id === 'zipCode') {
-                input.addEventListener('focus', function() {
-                    if (!applicationStarted) {
-                        // Shake screen and show error
-                        document.body.classList.add('animate-screen-shake');
-                        document.getElementById(`${this.id}Error`).style.display = 'block';
-                        this.classList.add('error');
-                        
-                        setTimeout(() => {
-                            document.body.classList.remove('animate-screen-shake');
-                        }, 500);
-                        
-                        // Prevent typing
-                        this.readOnly = true;
-                        
-                        // Show alert
-                        alert('ERROR: Please read Application Guidelines and Eligibility Requirements before proceeding!');
-                        
-                        // Redirect to guidelines
-                        window.open('https://1stardev.github.io/Florida_Office_Public_Governance/GovernorApplicationGL', '_blank');
-                    } else {
-                        this.readOnly = false;
-                        document.getElementById(`${this.id}Error`).style.display = 'none';
-                        this.classList.remove('error');
-                    }
-                });
-            }
         });
         
         // Form Submission
@@ -1267,9 +1426,39 @@
                 lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value,
-                zipCode: document.getElementById('zipCode').value,
+                
+                // Discord Information
+                discordId: document.getElementById('discordId').value,
+                discordUser: document.getElementById('discordUser').value,
+                discordActivity: document.getElementById('discordActivity').value,
+                
+                // Roblox Information
+                robloxId: document.getElementById('robloxId').value,
+                robloxUser: document.getElementById('robloxUser').value,
+                robloxExperience: document.getElementById('robloxExperience').value,
+                
+                // Leadership Questions
+                leadershipStyle: document.getElementById('leadershipStyle').value,
+                teamManagement: document.getElementById('teamManagement').value,
+                conflictResolution: document.getElementById('conflictResolution').value,
+                decisionMaking: document.getElementById('decisionMaking').value,
+                
+                // Government & State Questions
+                vision: document.getElementById('vision').value,
+                priorities: document.getElementById('priorities').value,
+                policyChanges: document.getElementById('policyChanges').value,
+                budgetManagement: document.getElementById('budgetManagement').value,
+                
+                // Situational Questions
+                crisisManagement: document.getElementById('crisisManagement').value,
+                opposition: document.getElementById('opposition').value,
+                unpopularDecision: document.getElementById('unpopularDecision').value,
+                
+                // Advanced Questions
+                constitutionalKnowledge: document.getElementById('constitutionalKnowledge').value,
+                longTermPlanning: document.getElementById('longTermPlanning').value,
+                innovation: document.getElementById('innovation').value,
+                legacy: document.getElementById('legacy').value,
                 
                 // Timing Information
                 totalTime: totalTime,
@@ -1281,27 +1470,84 @@
             // Discord Webhook URL
             const webhookURL = 'https://discord.com/api/webhooks/1437273486824312942/kKMjJ3p7zKtfBJXh0ww2XJUutnSL_Gzw4XGnASeYs883PG5Y1yZxnPIN-cFYoN4at0Uo';
             
-            // Create Discord message
+            // Create organized Discord message with multiple embeds
             const discordMessage = {
-                content: `**New Florida Governor Application**`,
-                embeds: [{
-                    title: `${formData.firstName} ${formData.lastName}`,
-                    color: 0xA0522D,
-                    fields: [
-                        {
-                            name: "Contact Information",
-                            value: `Email: ${formData.email}\nPhone: ${formData.phone}\nAddress: ${formData.address}, ${formData.city}, FL ${formData.zipCode}`
-                        },
-                        {
-                            name: "Time Information",
-                            value: `Total Time: ${formatTime(formData.totalTime)}\nQuestion Times: ${formatQuestionTimes(formData.questionTimes)}`
-                        },
-                        {
-                            name: "Submitted",
-                            value: new Date().toLocaleString()
+                content: `**NEW GOVERNOR APPLICATION SUBMITTED**`,
+                embeds: [
+                    {
+                        title: "👤 Applicant Information",
+                        color: 0xA0522D,
+                        fields: [
+                            {
+                                name: "Personal Details",
+                                value: `**Name:** ${formData.firstName} ${formData.lastName}\n**Email:** ${formData.email}\n**Phone:** ${formData.phone}`,
+                                inline: false
+                            },
+                            {
+                                name: "Discord Information",
+                                value: `**ID:** ${formData.discordId}\n**Username:** ${formData.discordUser}\n**Activity:** ${formData.discordActivity} hours/week`,
+                                inline: true
+                            },
+                            {
+                                name: "Roblox Information",
+                                value: `**ID:** ${formData.robloxId}\n**Username:** ${formData.robloxUser}\n**Experience:** ${formData.robloxExperience}`,
+                                inline: true
+                            }
+                        ],
+                        footer: {
+                            text: `Application submitted at ${new Date().toLocaleString()}`
                         }
-                    ]
-                }]
+                    },
+                    {
+                        title: "⏱️ Timing Analytics",
+                        color: 0x3498db,
+                        fields: [
+                            {
+                                name: "Total Completion Time",
+                                value: formatTime(formData.totalTime),
+                                inline: true
+                            },
+                            {
+                                name: "Longest Question",
+                                value: getLongestQuestion(formData.questionTimes),
+                                inline: true
+                            },
+                            {
+                                name: "Quickest Question",
+                                value: getQuickestQuestion(formData.questionTimes),
+                                inline: true
+                            }
+                        ]
+                    },
+                    {
+                        title: "💭 Leadership Vision",
+                        color: 0x2ecc71,
+                        fields: [
+                            {
+                                name: "Leadership Style",
+                                value: formData.leadershipStyle.length > 500 ? formData.leadershipStyle.substring(0, 497) + "..." : formData.leadershipStyle
+                            },
+                            {
+                                name: "Vision for Florida",
+                                value: formData.vision.length > 500 ? formData.vision.substring(0, 497) + "..." : formData.vision
+                            }
+                        ]
+                    },
+                    {
+                        title: "🏛️ Governance Approach",
+                        color: 0x9b59b6,
+                        fields: [
+                            {
+                                name: "Top Priorities",
+                                value: formData.priorities.length > 500 ? formData.priorities.substring(0, 497) + "..." : formData.priorities
+                            },
+                            {
+                                name: "Policy Changes",
+                                value: formData.policyChanges.length > 500 ? formData.policyChanges.substring(0, 497) + "..." : formData.policyChanges
+                            }
+                        ]
+                    }
+                ]
             };
             
             // Send to Discord webhook
@@ -1349,15 +1595,34 @@
             }
         }
         
-        // Helper function to format question times
-        function formatQuestionTimes(questionTimes) {
-            let result = '';
+        // Helper function to get longest question time
+        function getLongestQuestion(questionTimes) {
+            let longestTime = 0;
+            let longestQuestion = 'None';
+            
             for (const [questionId, timer] of Object.entries(questionTimes)) {
-                if (timer.timeSpent > 0) {
-                    result += `${questionId}: ${formatTime(timer.timeSpent)}\n`;
+                if (timer.timeSpent > longestTime) {
+                    longestTime = timer.timeSpent;
+                    longestQuestion = questionId;
                 }
             }
-            return result || 'No timing data available';
+            
+            return longestTime > 0 ? `${longestQuestion}: ${formatTime(longestTime)}` : 'No data';
+        }
+        
+        // Helper function to get quickest question time
+        function getQuickestQuestion(questionTimes) {
+            let quickestTime = Infinity;
+            let quickestQuestion = 'None';
+            
+            for (const [questionId, timer] of Object.entries(questionTimes)) {
+                if (timer.timeSpent > 0 && timer.timeSpent < quickestTime) {
+                    quickestTime = timer.timeSpent;
+                    quickestQuestion = questionId;
+                }
+            }
+            
+            return quickestTime < Infinity ? `${quickestQuestion}: ${formatTime(quickestTime)}` : 'No data';
         }
         
         // Modal functionality
@@ -1381,7 +1646,7 @@
         const formControls = document.querySelectorAll('.form-control');
         formControls.forEach(control => {
             control.addEventListener('focus', function() {
-                if (applicationStarted || (this.id !== 'address' && this.id !== 'city' && this.id !== 'zipCode')) {
+                if (applicationStarted) {
                     this.parentElement.classList.add('animate-glow');
                 }
             });
@@ -1399,10 +1664,19 @@
             requiredFields.forEach(field => {
                 if (!field.value) {
                     field.classList.add('animate-shake');
+                    const errorElement = document.getElementById(`${field.id}Error`);
+                    if (errorElement) {
+                        errorElement.style.display = 'block';
+                    }
                     setTimeout(() => {
                         field.classList.remove('animate-shake');
                     }, 500);
                     hasErrors = true;
+                } else {
+                    const errorElement = document.getElementById(`${field.id}Error`);
+                    if (errorElement) {
+                        errorElement.style.display = 'none';
+                    }
                 }
             });
             
@@ -1411,8 +1685,9 @@
             }
         });
         
-        // Initialize progress bar
+        // Initialize progress bar and character counters
         updateProgress();
+        setupCharacterCounters();
     </script>
 </body>
 </html>
