@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Office of Public Governance</title>
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/tycncf0zq0/Flordia%20Governace.png?updatedAt=1762737559332">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #0055a4 0%, #002d62 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .official-badge {
+            background-color: #c41230;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        
+        .nav-links a.active {
+            color: #ffd700;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ffd700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 45, 98, 0.8), rgba(0, 45, 98, 0.9)), url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #c41230;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background-color: #a00e26;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #002d62;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #c41230;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #002d62;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #002d62;
+            margin-bottom: 15px;
+        }
+        
+        /* Leadership Section */
+        .leadership {
+            background-color: #f0f4f8;
+            padding: 60px 0;
+        }
+        
+        .leader-card {
+            display: flex;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .leader-image {
+            width: 250px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 16px;
+        }
+        
+        .leader-info {
+            padding: 30px;
+            flex: 1;
+        }
+        
+        .leader-info h3 {
+            color: #002d62;
+            margin-bottom: 10px;
+        }
+        
+        .leader-title {
+            color: #c41230;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .leader-alias {
+            background-color: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        /* Discord Section */
+        .discord-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .discord-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .discord-icon {
+            font-size: 50px;
+            color: #5865F2;
+            margin-bottom: 20px;
+        }
+        
+        .discord-button {
+            display: inline-block;
+            background-color: #5865F2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .discord-button:hover {
+            background-color: #4752c4;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #002d62;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .leader-card {
+                flex-direction: column;
+            }
+            
+            .leader-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="https://ik.imagekit.io/tycncf0zq0/Flordia%20Governace.png?updatedAt=1762737559332" alt="Florida Office of Public Governance Logo" class="logo">
+                    <div>
+                        <div class="logo-text">Florida Office of Public Governance</div>
+                        <div class="logo-subtext">Department of Justice & Governance</div>
+                    </div>
+                </div>
+                <div class="official-badge">OFFICIAL GOVERNMENT SITE</div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Public Information</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Serving the People of Florida</h1>
+            <p>Dedicated to upholding justice, ensuring transparent governance, and protecting the rights of all Floridians.</p>
+            <a href="#" class="cta-button">Learn More About Our Mission</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <h2 class="section-title">Our Core Responsibilities</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Justice Administration</h3>
+                    <p>Overseeing the fair and efficient administration of justice throughout the state of Florida.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Public Governance</h3>
+                    <p>Ensuring transparent, accountable, and effective governance at all levels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Civil Rights Protection</h3>
+                    <p>Protecting the constitutional rights and liberties of all Florida residents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership">
+        <div class="container">
+            <h2 class="section-title">Office Leadership</h2>
+            <div class="leader-card">
+                <div class="leader-image">
+                    [Official Portrait]
+                </div>
+                <div class="leader-info">
+                    <h3>Jason C. Shepherd</h3>
+                    <div class="leader-title">State Executive Director</div>
+                    <div class="leader-alias">Also Known As 'Star'</div>
+                    <p>As the head of the Florida Office of Public Governance, Director Shepherd oversees all departmental operations and ensures the effective implementation of state policies and programs. With over 15 years of public service experience, Director Shepherd is committed to upholding the highest standards of governance and justice for the people of Florida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Section -->
+    <section class="discord-section">
+        <div class="container">
+            <div class="discord-container">
+                <div class="discord-icon">💬</div>
+                <h2>Connect With Us</h2>
+                <p>Join our official Discord communities to stay updated with the latest announcements and engage with our team.</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://discord.gg/2GyW9bfnun" class="discord-button" target="_blank">Department Discord</a>
+                    <a href="https://discord.gg/fssrrp" class="discord-button" style="margin-left: 10px;" target="_blank">RP Server Discord</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Florida Office of Public Governance</h3>
+                    <p>Dedicated to serving the people of Florida through effective governance and justice administration.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Public Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Forms & Documents</a></li>
+                        <li><a href="#">Legal Resources</a></li>
+                        <li><a href="#">Public Records</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Phone: (850) 123-4567</a></li>
+                        <li><a href="#">Email: info@flgov.org</a></li>
+                        <li><a href="#">Address: Tallahassee, FL</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Florida Office of Public Governance. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
