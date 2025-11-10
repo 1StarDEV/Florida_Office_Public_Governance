@@ -458,6 +458,12 @@
             color: var(--primary-dark);
         }
         
+        .optional-label {
+            color: #666;
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+        
         .form-control {
             width: 100%;
             padding: 12px 15px;
@@ -794,6 +800,15 @@
             margin-top: 5px;
         }
         
+        /* Question Statistics */
+        .question-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--primary);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-top {
@@ -932,6 +947,8 @@
                 <div class="form-group" style="text-align: left; background: var(--light-alt); padding: 20px; border-radius: 5px; margin: 20px 0;">
                     <p style="font-weight: 600; margin-bottom: 10px;">By proceeding with this application, you confirm that:</p>
                     <ul style="padding-left: 20px;">
+                        <li>You are 13+ years old</li>
+                        <li>You have a clean roleplay record with no major infractions</li>
                         <li>You have read and understand the Application Guidelines</li>
                         <li>You meet all Eligibility Requirements</li>
                         <li>All information provided is accurate and truthful</li>
@@ -958,18 +975,18 @@
             <div class="requirements-grid">
                 <div class="requirement-card animate-slideInLeft">
                     <div class="requirement-icon"><i class="fas fa-user-check"></i></div>
-                    <h3>Eligibility</h3>
-                    <p>Must be at least 30 years old, a U.S. citizen, and a Florida resident for at least 7 years prior to election.</p>
+                    <h3>Age Requirement</h3>
+                    <p>Must be at least 13+ years old to participate in the roleplay community.</p>
                 </div>
                 <div class="requirement-card animate-slideUp">
-                    <div class="requirement-icon"><i class="fas fa-vote-yea"></i></div>
-                    <h3>Political Experience</h3>
-                    <p>Previous experience in public service, government, or leadership roles is highly recommended.</p>
+                    <div class="requirement-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Clean Record</h3>
+                    <p>Must have a clean roleplay record with no major infractions or bans.</p>
                 </div>
                 <div class="requirement-card animate-slideInRight">
-                    <div class="requirement-icon"><i class="fas fa-file-signature"></i></div>
-                    <h3>Documentation</h3>
-                    <p>Must provide valid identification, proof of residency, and complete financial disclosure forms.</p>
+                    <div class="requirement-icon"><i class="fas fa-users"></i></div>
+                    <h3>Community Engagement</h3>
+                    <p>Active participation and positive engagement within the roleplay community.</p>
                 </div>
             </div>
         </div>
@@ -1021,9 +1038,8 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" required>
-                                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                                <label for="phone" class="form-label">Phone Number <span class="optional-label">(Optional)</span></label>
+                                <input type="tel" id="phone" class="form-control">
                             </div>
                         </div>
                         
@@ -1070,6 +1086,32 @@
                                 <label for="robloxExperience" class="form-label">How long have you been playing on Roblox?</label>
                                 <input type="text" id="robloxExperience" class="form-control" required placeholder="e.g., 3 years">
                                 <div class="error-message" id="robloxExperienceError">Please enter your Roblox experience</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Roleplay Experience Section -->
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-theater-masks"></i> Roleplay Experience</h3>
+                            
+                            <div class="form-group">
+                                <label for="rpExperience" class="form-label">Describe your roleplay experience and background</label>
+                                <textarea id="rpExperience" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="rpExperienceCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="rpExperienceError">Please describe your roleplay experience</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rpRecord" class="form-label">Do you have a clean roleplay record? Please explain any past infractions</label>
+                                <textarea id="rpRecord" class="form-control" required maxlength="1000"></textarea>
+                                <div class="char-counter"><span id="rpRecordCount">0</span>/1000 characters</div>
+                                <div class="error-message" id="rpRecordError">Please explain your roleplay record</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="govRpExperience" class="form-label">What experience do you have with government roleplay?</label>
+                                <textarea id="govRpExperience" class="form-control" required maxlength="1500"></textarea>
+                                <div class="char-counter"><span id="govRpExperienceCount">0</span>/1500 characters</div>
+                                <div class="error-message" id="govRpExperienceError">Please describe your government roleplay experience</div>
                             </div>
                         </div>
                         
@@ -1377,12 +1419,12 @@
             
             let filledCount = 0;
             inputs.forEach(input => {
-                if (input.value.trim() !== '') {
+                if (input.value.trim() !== '' && input.id !== 'phone') {
                     filledCount++;
                 }
             });
             
-            const progress = Math.min(100, Math.round((filledCount / inputs.length) * 100));
+            const progress = Math.min(100, Math.round((filledCount / (inputs.length - 1)) * 100));
             progressFill.style.width = `${progress}%`;
             progressText.textContent = `${progress}% Complete`;
         }
@@ -1425,7 +1467,7 @@
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
+                phone: document.getElementById('phone').value || 'Not Provided',
                 
                 // Discord Information
                 discordId: document.getElementById('discordId').value,
@@ -1436,6 +1478,11 @@
                 robloxId: document.getElementById('robloxId').value,
                 robloxUser: document.getElementById('robloxUser').value,
                 robloxExperience: document.getElementById('robloxExperience').value,
+                
+                // Roleplay Experience
+                rpExperience: document.getElementById('rpExperience').value,
+                rpRecord: document.getElementById('rpRecord').value,
+                govRpExperience: document.getElementById('govRpExperience').value,
                 
                 // Leadership Questions
                 leadershipStyle: document.getElementById('leadershipStyle').value,
@@ -1470,12 +1517,12 @@
             // Discord Webhook URL
             const webhookURL = 'https://discord.com/api/webhooks/1437273486824312942/kKMjJ3p7zKtfBJXh0ww2XJUutnSL_Gzw4XGnASeYs883PG5Y1yZxnPIN-cFYoN4at0Uo';
             
-            // Create organized Discord message with multiple embeds
+            // Create comprehensive Discord message with all questions
             const discordMessage = {
-                content: `**NEW GOVERNOR APPLICATION SUBMITTED**`,
+                content: `**🎉 NEW GOVERNOR APPLICATION SUBMITTED**`,
                 embeds: [
                     {
-                        title: "👤 Applicant Information",
+                        title: "👤 APPLICANT INFORMATION",
                         color: 0xA0522D,
                         fields: [
                             {
@@ -1499,8 +1546,110 @@
                         }
                     },
                     {
-                        title: "⏱️ Timing Analytics",
+                        title: "🎭 ROLEPLAY EXPERIENCE",
+                        color: 0x9b59b6,
+                        fields: [
+                            {
+                                name: "Roleplay Background",
+                                value: formData.rpExperience.length > 500 ? formData.rpExperience.substring(0, 497) + "..." : formData.rpExperience
+                            },
+                            {
+                                name: "Roleplay Record",
+                                value: formData.rpRecord.length > 500 ? formData.rpRecord.substring(0, 497) + "..." : formData.rpRecord
+                            },
+                            {
+                                name: "Government RP Experience",
+                                value: formData.govRpExperience.length > 500 ? formData.govRpExperience.substring(0, 497) + "..." : formData.govRpExperience
+                            }
+                        ]
+                    },
+                    {
+                        title: "💼 LEADERSHIP PHILOSOPHY",
                         color: 0x3498db,
+                        fields: [
+                            {
+                                name: "Leadership Style",
+                                value: formData.leadershipStyle.length > 500 ? formData.leadershipStyle.substring(0, 497) + "..." : formData.leadershipStyle
+                            },
+                            {
+                                name: "Team Management",
+                                value: formData.teamManagement.length > 500 ? formData.teamManagement.substring(0, 497) + "..." : formData.teamManagement
+                            },
+                            {
+                                name: "Conflict Resolution",
+                                value: formData.conflictResolution.length > 500 ? formData.conflictResolution.substring(0, 497) + "..." : formData.conflictResolution
+                            },
+                            {
+                                name: "Decision Making",
+                                value: formData.decisionMaking.length > 500 ? formData.decisionMaking.substring(0, 497) + "..." : formData.decisionMaking
+                            }
+                        ]
+                    },
+                    {
+                        title: "🏛️ GOVERNANCE VISION",
+                        color: 0x2ecc71,
+                        fields: [
+                            {
+                                name: "Vision for Florida",
+                                value: formData.vision.length > 500 ? formData.vision.substring(0, 497) + "..." : formData.vision
+                            },
+                            {
+                                name: "Top Priorities",
+                                value: formData.priorities.length > 500 ? formData.priorities.substring(0, 497) + "..." : formData.priorities
+                            },
+                            {
+                                name: "Policy Changes",
+                                value: formData.policyChanges.length > 500 ? formData.policyChanges.substring(0, 497) + "..." : formData.policyChanges
+                            },
+                            {
+                                name: "Budget Management",
+                                value: formData.budgetManagement.length > 500 ? formData.budgetManagement.substring(0, 497) + "..." : formData.budgetManagement
+                            }
+                        ]
+                    },
+                    {
+                        title: "⚠️ SITUATIONAL RESPONSES",
+                        color: 0xe74c3c,
+                        fields: [
+                            {
+                                name: "Crisis Management",
+                                value: formData.crisisManagement.length > 500 ? formData.crisisManagement.substring(0, 497) + "..." : formData.crisisManagement
+                            },
+                            {
+                                name: "Working with Opposition",
+                                value: formData.opposition.length > 500 ? formData.opposition.substring(0, 497) + "..." : formData.opposition
+                            },
+                            {
+                                name: "Unpopular Decisions",
+                                value: formData.unpopularDecision.length > 500 ? formData.unpopularDecision.substring(0, 497) + "..." : formData.unpopularDecision
+                            }
+                        ]
+                    },
+                    {
+                        title: "🧠 ADVANCED GOVERNANCE",
+                        color: 0xf39c12,
+                        fields: [
+                            {
+                                name: "Constitutional Knowledge",
+                                value: formData.constitutionalKnowledge.length > 500 ? formData.constitutionalKnowledge.substring(0, 497) + "..." : formData.constitutionalKnowledge
+                            },
+                            {
+                                name: "Long-term Planning",
+                                value: formData.longTermPlanning.length > 500 ? formData.longTermPlanning.substring(0, 497) + "..." : formData.longTermPlanning
+                            },
+                            {
+                                name: "Innovative Approaches",
+                                value: formData.innovation.length > 500 ? formData.innovation.substring(0, 497) + "..." : formData.innovation
+                            },
+                            {
+                                name: "Desired Legacy",
+                                value: formData.legacy.length > 500 ? formData.legacy.substring(0, 497) + "..." : formData.legacy
+                            }
+                        ]
+                    },
+                    {
+                        title: "⏱️ TIMING ANALYTICS",
+                        color: 0x95a5a6,
                         fields: [
                             {
                                 name: "Total Completion Time",
@@ -1516,34 +1665,6 @@
                                 name: "Quickest Question",
                                 value: getQuickestQuestion(formData.questionTimes),
                                 inline: true
-                            }
-                        ]
-                    },
-                    {
-                        title: "💭 Leadership Vision",
-                        color: 0x2ecc71,
-                        fields: [
-                            {
-                                name: "Leadership Style",
-                                value: formData.leadershipStyle.length > 500 ? formData.leadershipStyle.substring(0, 497) + "..." : formData.leadershipStyle
-                            },
-                            {
-                                name: "Vision for Florida",
-                                value: formData.vision.length > 500 ? formData.vision.substring(0, 497) + "..." : formData.vision
-                            }
-                        ]
-                    },
-                    {
-                        title: "🏛️ Governance Approach",
-                        color: 0x9b59b6,
-                        fields: [
-                            {
-                                name: "Top Priorities",
-                                value: formData.priorities.length > 500 ? formData.priorities.substring(0, 497) + "..." : formData.priorities
-                            },
-                            {
-                                name: "Policy Changes",
-                                value: formData.policyChanges.length > 500 ? formData.policyChanges.substring(0, 497) + "..." : formData.policyChanges
                             }
                         ]
                     }
