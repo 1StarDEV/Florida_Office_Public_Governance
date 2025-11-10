@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Governor Application</title>
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/tycncf0zq0/Flordia%20Governace.png?updatedAt=1762737559332">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B7355;
+            --primary-dark: #6B5C43;
+            --primary-light: #A6947A;
+            --accent: #A0522D;
+            --accent-dark: #8B4513;
+            --light: #f8f5f0;
+            --light-alt: #f0ebe3;
+            --dark: #333;
+            --text: #444;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .roleplay-notice {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            font-size: 10px;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .roleplay-notice:hover {
+            opacity: 1;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(160, 82, 45, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(160, 82, 45, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(160, 82, 45, 0.5); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+        
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease forwards;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo {
+            height: 60px;
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: rotate(5deg);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .official-badge {
+            background-color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .official-badge:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 115, 85, 0.8), rgba(107, 92, 67, 0.9)), url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Countdown Section */
+        .countdown {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .countdown-title {
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 120px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .countdown-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        /* Application Form */
+        .application {
+            padding: 80px 0;
+        }
+        
+        .application-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .application-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .application-header h2 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .application-body {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--light-alt);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Requirements Section */
+        .requirements {
+            background-color: var(--light-alt);
+            padding: 80px 0;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .requirement-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .requirement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .requirement-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .requirement-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-light);
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+        
+        .process-step:hover .step-number {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #D2B48C;
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #D2B48C;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-links a:hover {
+            color: #D2B48C;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: #D2B48C;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.5s ease;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        .modal-icon {
+            font-size: 60px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Roleplay Notice -->
+    <div class="roleplay-notice">This is for a roleplay community, not a real website</div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="https://ik.imagekit.io/tycncf0zq0/Flordia%20Governace.png?updatedAt=1762737559332" alt="Florida Office of Public Governance Logo" class="logo">
+                    <div>
+                        <div class="logo-text">Florida Office of Public Governance</div>
+                        <div class="logo-subtext">Department of Justice & Governance</div>
+                    </div>
+                </div>
+                <div class="official-badge">GOVERNOR APPLICATION</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fadeIn">
+                <h1 class="animate-slideUp">Florida Governor Application</h1>
+                <p class="animate-slideUp">Apply to become the next Governor of Florida and lead our great state toward a brighter future.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown">
+        <div class="container">
+            <h2 class="countdown-title animate-fadeIn">Application Closes In</h2>
+            <div class="countdown-container">
+                <div class="countdown-item animate-slideInLeft">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item animate-slideUp">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item animate-slideUp">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item animate-slideInRight">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Governor Requirements</h2>
+            <div class="requirements-grid">
+                <div class="requirement-card animate-slideInLeft">
+                    <div class="requirement-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Eligibility</h3>
+                    <p>Must be at least 30 years old, a U.S. citizen, and a Florida resident for at least 7 years prior to election.</p>
+                </div>
+                <div class="requirement-card animate-slideUp">
+                    <div class="requirement-icon"><i class="fas fa-vote-yea"></i></div>
+                    <h3>Political Experience</h3>
+                    <p>Previous experience in public service, government, or leadership roles is highly recommended.</p>
+                </div>
+                <div class="requirement-card animate-slideInRight">
+                    <div class="requirement-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>Documentation</h3>
+                    <p>Must provide valid identification, proof of residency, and complete financial disclosure forms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process -->
+    <section class="process section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Application Process</h2>
+            <div class="process-steps">
+                <div class="process-step animate-slideInLeft">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Submit Application</h3>
+                    <p>Complete the online application form with all required information.</p>
+                </div>
+                <div class="process-step animate-slideUp">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Review Process</h3>
+                    <p>Our committee will review your application and qualifications.</p>
+                </div>
+                <div class="process-step animate-slideUp">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Interview</h3>
+                    <p>Selected candidates will be invited for an interview with the selection committee.</p>
+                </div>
+                <div class="process-step animate-slideInRight">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Final Decision</h3>
+                    <p>The committee will make the final decision and notify all applicants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application section-padding">
+        <div class="container">
+            <div class="application-container animate-glow">
+                <div class="application-header">
+                    <h2>Florida Governor Application Form</h2>
+                    <p>Complete all fields below to submit your application</p>
+                </div>
+                <div class="application-body">
+                    <form id="governorApplication">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address" class="form-label">Residential Address</label>
+                            <input type="text" id="address" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" id="city" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">ZIP Code</label>
+                                    <input type="text" id="zipCode" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience" class="form-label">Political/Leadership Experience</label>
+                            <textarea id="experience" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="platform" class="form-label">Governance Platform</label>
+                            <textarea id="platform" class="form-control" required placeholder="Describe your vision for Florida and key policy priorities"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="qualifications" class="form-label">Qualifications</label>
+                            <textarea id="qualifications" class="form-control" required placeholder="What makes you qualified to be Governor of Florida?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn animate-pulse" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Florida Office of Public Governance</h3>
+                    <p>Overseeing the governor application process and ensuring a fair selection for the people of Florida.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Application Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Application Guidelines</a></li>
+                        <li><a href="#"><i class="fas fa-gavel"></i> Eligibility Requirements</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Application Timeline</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fab fa-discord"></i> Department Discord Server</li>
+                        <li><i class="fas fa-info-circle"></i> Primary communication channel</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Tallahassee, Florida</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Florida Office of Public Governance. All rights reserved. | This is a roleplay community website.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Application Submitted!</h2>
+            <p>Your Florida Governor application has been successfully submitted.</p>
+            <p>You will receive a confirmation email shortly. The selection committee will review all applications and contact qualified candidates for interviews.</p>
+            <button class="submit-btn" id="modalOk" style="margin-top: 20px;">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const countdownDate = new Date('November 10, 2025 19:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                document.querySelector('.countdown-title').innerText = 'Application Closed';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            
+            // Add animation to countdown numbers when they change
+            if (seconds === 0) {
+                document.getElementById('seconds').classList.add('animate-pulse');
+                setTimeout(() => {
+                    document.getElementById('seconds').classList.remove('animate-pulse');
+                }, 1000);
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Form Submission
+        document.getElementById('governorApplication').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                zipCode: document.getElementById('zipCode').value,
+                experience: document.getElementById('experience').value,
+                platform: document.getElementById('platform').value,
+                qualifications: document.getElementById('qualifications').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Discord Webhook URL
+            const webhookURL = 'https://discord.com/api/webhooks/1437273486824312942/kKMjJ3p7zKtfBJXh0ww2XJUutnSL_Gzw4XGnASeYs883PG5Y1yZxnPIN-cFYoN4at0Uo';
+            
+            // Create Discord message
+            const discordMessage = {
+                content: `**New Florida Governor Application**`,
+                embeds: [{
+                    title: `${formData.firstName} ${formData.lastName}`,
+                    color: 0xA0522D,
+                    fields: [
+                        {
+                            name: "Contact Information",
+                            value: `Email: ${formData.email}\nPhone: ${formData.phone}\nAddress: ${formData.address}, ${formData.city}, FL ${formData.zipCode}`
+                        },
+                        {
+                            name: "Experience",
+                            value: formData.experience.length > 1024 ? formData.experience.substring(0, 1021) + "..." : formData.experience
+                        },
+                        {
+                            name: "Platform",
+                            value: formData.platform.length > 1024 ? formData.platform.substring(0, 1021) + "..." : formData.platform
+                        },
+                        {
+                            name: "Qualifications",
+                            value: formData.qualifications.length > 1024 ? formData.qualifications.substring(0, 1021) + "..." : formData.qualifications
+                        },
+                        {
+                            name: "Submitted",
+                            value: new Date().toLocaleString()
+                        }
+                    ]
+                }]
+            };
+            
+            // Send to Discord webhook
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(discordMessage)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success modal
+                    document.getElementById('successModal').style.display = 'flex';
+                    
+                    // Reset form
+                    document.getElementById('governorApplication').reset();
+                } else {
+                    throw new Error('Failed to submit application');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your application. Please try again.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+            });
+        });
+        
+        // Modal functionality
+        document.getElementById('modalClose').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+        
+        document.getElementById('modalOk').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('successModal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Add animation to form elements on focus
+        const formControls = document.querySelectorAll('.form-control');
+        formControls.forEach(control => {
+            control.addEventListener('focus', function() {
+                this.parentElement.classList.add('animate-glow');
+            });
+            
+            control.addEventListener('blur', function() {
+                this.parentElement.classList.remove('animate-glow');
+            });
+        });
+        
+        // Add shake animation to required fields if empty on submit attempt
+        document.getElementById('governorApplication').addEventListener('submit', function(e) {
+            let hasErrors = false;
+            const requiredFields = document.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.classList.add('animate-shake');
+                    setTimeout(() => {
+                        field.classList.remove('animate-shake');
+                    }, 500);
+                    hasErrors = true;
+                }
+            });
+            
+            if (hasErrors) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
