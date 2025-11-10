@@ -6,19 +6,43 @@
     <title>Florida Office of Public Governance</title>
     <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/tycncf0zq0/Flordia%20Governace.png?updatedAt=1762737559332">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        :root {
+            --primary: #8B7355;
+            --primary-dark: #6B5C43;
+            --primary-light: #A6947A;
+            --accent: #A0522D;
+            --accent-dark: #8B4513;
+            --light: #f8f5f0;
+            --light-alt: #f0ebe3;
+            --dark: #333;
+            --text: #444;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
         
         body {
-            background-color: #f8f5f0;
-            color: #333;
+            background-color: var(--light);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.3;
         }
         
         .container {
@@ -28,12 +52,98 @@
             padding: 0 20px;
         }
         
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .roleplay-notice {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            font-size: 10px;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .roleplay-notice:hover {
+            opacity: 1;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+        
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease forwards;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, #8B7355 0%, #6B5C43 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .header-top {
@@ -47,11 +157,21 @@
         .logo-container {
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.02);
         }
         
         .logo {
             height: 60px;
             margin-right: 15px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: rotate(5deg);
         }
         
         .logo-text {
@@ -65,11 +185,17 @@
         }
         
         .official-badge {
-            background-color: #A0522D;
+            background-color: var(--accent);
             padding: 5px 10px;
             border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .official-badge:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
         }
         
         nav {
@@ -84,13 +210,14 @@
         
         .nav-links li {
             margin-right: 25px;
+            position: relative;
         }
         
         .nav-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
             padding: 5px 0;
             position: relative;
         }
@@ -99,18 +226,27 @@
             color: #D2B48C;
         }
         
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #D2B48C;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
         .nav-links a.active {
             color: #D2B48C;
         }
         
         .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
             width: 100%;
-            height: 3px;
-            background-color: #D2B48C;
         }
         
         /* Hero Section */
@@ -118,15 +254,34 @@
             background: linear-gradient(rgba(139, 115, 85, 0.8), rgba(107, 92, 67, 0.9)), url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 80px 0;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 120px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: var(--white);
         }
         
         .hero p {
@@ -138,30 +293,37 @@
         
         .cta-button {
             display: inline-block;
-            background-color: #A0522D;
-            color: white;
-            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 15px 35px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
         }
         
         .cta-button:hover {
-            background-color: #8B4513;
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button:active {
+            transform: translateY(-1px);
         }
         
         /* Main Content */
         .main-content {
-            padding: 60px 0;
+            padding: 80px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            color: #6B5C43;
+            margin-bottom: 50px;
+            color: var(--primary-dark);
             position: relative;
             padding-bottom: 15px;
         }
@@ -174,7 +336,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: #A0522D;
+            background-color: var(--accent);
         }
         
         .features {
@@ -185,99 +347,231 @@
         }
         
         .feature-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .feature-icon {
-            font-size: 40px;
-            color: #8B7355;
-            margin-bottom: 20px;
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover .feature-icon {
+            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .feature-card h3 {
-            color: #6B5C43;
+            color: var(--primary-dark);
             margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-card p {
+            color: var(--text);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
         }
         
         /* Leadership Section */
         .leadership {
-            background-color: #f0ebe3;
-            padding: 60px 0;
+            background-color: var(--light-alt);
+            padding: 80px 0;
         }
         
         .leader-card {
             display: flex;
-            background-color: white;
+            background-color: var(--white);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            max-width: 800px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
             margin: 0 auto;
+            transition: var(--transition);
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .leader-image {
-            width: 250px;
-            background-color: #e9e2d6;
+            width: 300px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #8B7355;
+            color: var(--white);
             font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leader-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
         }
         
         .leader-info {
-            padding: 30px;
+            padding: 40px;
             flex: 1;
         }
         
         .leader-info h3 {
-            color: #6B5C43;
+            color: var(--primary-dark);
             margin-bottom: 10px;
+            font-size: 28px;
         }
         
         .leader-title {
-            color: #A0522D;
+            color: var(--accent);
             font-weight: 600;
             margin-bottom: 15px;
+            font-size: 18px;
         }
         
         .leader-alias {
-            background-color: #e9e2d6;
-            padding: 5px 10px;
+            background-color: var(--light-alt);
+            padding: 8px 15px;
             border-radius: 4px;
             display: inline-block;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: var(--primary-dark);
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: var(--primary-dark);
             margin-bottom: 15px;
-            font-size: 14px;
-            color: #6B5C43;
         }
         
         /* Discord Section */
         .discord-section {
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--white);
         }
         
         .discord-container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            color: var(--text);
+            transition: var(--transition);
+        }
+        
+        .discord-container:hover {
+            transform: scale(1.02);
         }
         
         .discord-icon {
-            font-size: 50px;
+            font-size: 60px;
             color: #5865F2;
             margin-bottom: 20px;
         }
@@ -285,37 +579,164 @@
         .discord-button {
             display: inline-block;
             background-color: #5865F2;
-            color: white;
-            padding: 12px 25px;
+            color: var(--white);
+            padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             margin-top: 20px;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            border: 2px solid transparent;
         }
         
         .discord-button:hover {
             background-color: #4752c4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            padding: 80px 0;
+            background-color: var(--light-alt);
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: var(--primary-dark);
+        }
+        
+        .faq-answer {
+            background: var(--white);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
         }
         
         /* Footer */
         footer {
-            background-color: #6B5C43;
-            color: white;
-            padding: 50px 0 20px;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-column h3 {
             color: #D2B48C;
             margin-bottom: 20px;
-            font-size: 18px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #D2B48C;
         }
         
         .footer-links {
@@ -323,17 +744,26 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
         
         .footer-links a:hover {
             color: #D2B48C;
+            transform: translateX(5px);
         }
         
         .contact-info {
@@ -341,26 +771,56 @@
         }
         
         .contact-info li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
         
         .contact-info i {
-            margin-right: 10px;
+            margin-right: 15px;
             width: 20px;
             text-align: center;
+            color: #D2B48C;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
         }
         
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .leader-card {
+                flex-direction: column;
+            }
+            
+            .leader-image {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-top {
                 flex-direction: column;
@@ -381,25 +841,115 @@
             }
             
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero p {
                 font-size: 18px;
             }
             
-            .leader-card {
-                flex-direction: column;
+            .section-padding {
+                padding: 60px 0;
             }
-            
-            .leader-image {
-                width: 100%;
-                height: 200px;
-            }
+        }
+        
+        /* Additional Content to Reach 1000+ Lines */
+        .additional-content {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .content-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .content-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-alt);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin: 20px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--primary-light);
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        
+        .partners {
+            padding: 60px 0;
+        }
+        
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .partner-logo {
+            height: 80px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
+    <!-- Roleplay Notice -->
+    <div class="roleplay-notice">This is for a roleplay community, not a real website</div>
+    
     <!-- Header -->
     <header>
         <div class="container">
@@ -427,65 +977,226 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Serving the People of Florida</h1>
-            <p>Dedicated to upholding justice, ensuring transparent governance, and protecting the rights of all Floridians.</p>
-            <a href="https://1stardev.github.io/Florida_Office_Public_Governance/AboutUs" class="cta-button">Learn More About Our Mission</a>
+            <div class="hero-content animate-fadeIn">
+                <h1 class="animate-slideUp">Serving the People of Florida</h1>
+                <p class="animate-slideUp">Dedicated to upholding justice, ensuring transparent governance, and protecting the rights of all Floridians.</p>
+                <a href="https://1stardev.github.io/Florida_Office_Public_Governance/AboutUs" class="cta-button animate-pulse">Learn More About Our Mission</a>
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
     <section class="main-content">
         <div class="container">
-            <h2 class="section-title">Our Core Responsibilities</h2>
+            <h2 class="section-title animate-fadeIn">Our Core Responsibilities</h2>
             <div class="features">
-                <div class="feature-card">
+                <div class="feature-card animate-slideInLeft">
                     <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
                     <h3>Justice Administration</h3>
-                    <p>Overseeing the fair and efficient administration of justice throughout the state of Florida.</p>
+                    <p>Overseeing the fair and efficient administration of justice throughout the state of Florida, ensuring equal treatment under the law for all citizens.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-slideUp">
                     <div class="feature-icon"><i class="fas fa-landmark"></i></div>
                     <h3>Public Governance</h3>
-                    <p>Ensuring transparent, accountable, and effective governance at all levels.</p>
+                    <p>Ensuring transparent, accountable, and effective governance at all levels through comprehensive oversight and policy implementation.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-slideInRight">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Civil Rights Protection</h3>
-                    <p>Protecting the constitutional rights and liberties of all Florida residents.</p>
+                    <p>Protecting the constitutional rights and liberties of all Florida residents through vigilant monitoring and enforcement of civil rights laws.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item animate-fadeIn">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat-item animate-fadeIn">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Cases Resolved</div>
+                </div>
+                <div class="stat-item animate-fadeIn">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Public Satisfaction</div>
+                </div>
+                <div class="stat-item animate-fadeIn">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Availability</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Leadership Section -->
-    <section class="leadership">
+    <section class="leadership section-padding">
         <div class="container">
-            <h2 class="section-title">Office Leadership</h2>
-            <div class="leader-card">
+            <h2 class="section-title animate-fadeIn">Office Leadership</h2>
+            <div class="leader-card animate-slideUp">
                 <div class="leader-image">
-                    <i class="fas fa-user-tie" style="font-size: 80px;"></i>
+                    <i class="fas fa-user-tie" style="font-size: 100px;"></i>
                 </div>
                 <div class="leader-info">
                     <h3>Jason C. Shepherd</h3>
                     <div class="leader-title">State Executive Director</div>
                     <div class="leader-alias">Also Known As 'Star'</div>
                     <p>As the head of the Florida Office of Public Governance, Director Shepherd oversees all departmental operations and ensures the effective implementation of state policies and programs. With over 15 years of public service experience, Director Shepherd is committed to upholding the highest standards of governance and justice for the people of Florida.</p>
+                    <p>Under his leadership, the department has implemented numerous initiatives to increase government transparency, streamline public services, and strengthen community engagement. Director Shepherd's vision for Florida includes a government that is both efficient and accessible to all citizens.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Discord Section -->
-    <section class="discord-section">
+    <!-- Services Section -->
+    <section class="services section-padding">
         <div class="container">
-            <div class="discord-container">
+            <h2 class="section-title animate-fadeIn">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card animate-slideInLeft">
+                    <div class="service-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Legal Assistance</h3>
+                    <p>Providing legal guidance and support to citizens navigating government processes and understanding their rights under Florida law.</p>
+                </div>
+                <div class="service-card animate-slideUp">
+                    <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Policy Development</h3>
+                    <p>Creating and implementing policies that promote good governance, transparency, and accountability across all state agencies.</p>
+                </div>
+                <div class="service-card animate-slideInRight">
+                    <div class="service-icon"><i class="fas fa-users"></i></div>
+                    <h3>Community Outreach</h3>
+                    <p>Engaging with communities across Florida to ensure government services meet the needs of all citizens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Our History</h2>
+            <div class="timeline-container">
+                <div class="timeline-item animate-slideInLeft">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2010</div>
+                        <h3>Office Establishment</h3>
+                        <p>The Florida Office of Public Governance was established to streamline government operations and improve public service delivery.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-slideInRight">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2014</div>
+                        <h3>Transparency Initiative</h3>
+                        <p>Launched the Florida Transparency Portal, providing citizens with unprecedented access to government data and decision-making processes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-slideInLeft">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018</div>
+                        <h3>Digital Transformation</h3>
+                        <p>Implemented comprehensive digital services, allowing citizens to access government resources online 24/7.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-slideInRight">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3>Community Engagement Expansion</h3>
+                        <p>Expanded outreach programs to ensure all Florida communities have a voice in governance decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Content Section -->
+    <section class="additional-content section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Department Initiatives</h2>
+            <div class="content-grid">
+                <div class="content-card animate-slideInLeft">
+                    <h3>Digital Governance</h3>
+                    <p>Our department is leading the transition to fully digital government services, making it easier for citizens to access resources and information from anywhere in the state.</p>
+                    <p>We've implemented secure online portals for document submission, virtual meetings with government officials, and real-time tracking of service requests.</p>
+                </div>
+                <div class="content-card animate-slideUp">
+                    <h3>Ethics and Compliance</h3>
+                    <p>Maintaining the highest ethical standards is central to our mission. We've established rigorous compliance protocols and regular ethics training for all government employees.</p>
+                    <p>Our whistleblower protection program ensures that those who report misconduct are protected from retaliation.</p>
+                </div>
+                <div class="content-card animate-slideInRight">
+                    <h3>Interagency Collaboration</h3>
+                    <p>We facilitate cooperation between different government agencies to ensure seamless service delivery and eliminate bureaucratic redundancies.</p>
+                    <p>Our cross-departmental task forces address complex issues that require coordinated responses from multiple government entities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">What Citizens Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial animate-fadeIn">
+                    <div class="testimonial-text">"The Public Governance Office helped me navigate a complex permitting process that had been stalled for months. Their intervention resolved the issue in just two weeks!"</div>
+                    <div class="testimonial-author">- Maria Rodriguez, Miami</div>
+                </div>
+                <div class="testimonial animate-fadeIn">
+                    <div class="testimonial-text">"As a small business owner, I appreciate the transparency and efficiency the Office has brought to local government. The online portal saves me hours every week."</div>
+                    <div class="testimonial-author">- James Wilson, Tampa</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item animate-slideInLeft">
+                    <div class="faq-question">How can I report government misconduct?</div>
+                    <div class="faq-answer">You can report government misconduct through our secure online portal, by calling our hotline at (850) 123-4567, or by visiting any of our regional offices. All reports are confidential, and we have whistleblower protections in place.</div>
+                </div>
+                <div class="faq-item animate-slideInRight">
+                    <div class="faq-question">What services does the Office provide to citizens?</div>
+                    <div class="faq-answer">We provide a wide range of services including assistance with government processes, transparency initiatives, policy development oversight, community engagement programs, and legal guidance on governance matters.</div>
+                </div>
+                <div class="faq-item animate-slideInLeft">
+                    <div class="faq-question">How can I access public records?</div>
+                    <div class="faq-answer">Public records can be accessed through our online portal, by submitting a formal request at any of our offices, or through the Florida Sunshine Law portal. Most records are available within 3-5 business days.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners section-padding">
+        <div class="container">
+            <h2 class="section-title animate-fadeIn">Our Partners</h2>
+            <div class="partners-grid">
+                <img src="https://via.placeholder.com/150x80/8B7355/FFFFFF?text=FL+Dept+Justice" alt="Florida Department of Justice" class="partner-logo">
+                <img src="https://via.placeholder.com/150x80/6B5C43/FFFFFF?text=FL+State+Police" alt="Florida State Police" class="partner-logo">
+                <img src="https://via.placeholder.com/150x80/A0522D/FFFFFF?text=FL+Transparency" alt="Florida Transparency Office" class="partner-logo">
+                <img src="https://via.placeholder.com/150x80/8B7355/FFFFFF?text=Community+Board" alt="Community Governance Board" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Section -->
+    <section class="discord-section section-padding">
+        <div class="container">
+            <div class="discord-container animate-float">
                 <div class="discord-icon"><i class="fab fa-discord"></i></div>
                 <h2>Connect With Us</h2>
-                <p>Join our official Discord communities to stay updated with the latest announcements and engage with our team.</p>
-                <div style="margin-top: 20px;">
-                    <a href="https://discord.gg/2GyW9bfnun" class="discord-button" target="_blank">Department Discord</a>
-                    <a href="https://discord.gg/fssrrp" class="discord-button" style="margin-left: 10px;" target="_blank">RP Server Discord</a>
-                </div>
+                <p>Join our official Discord community to stay updated with the latest announcements, participate in discussions, and engage directly with our team.</p>
+                <p>Our Discord server is the primary platform for community interaction and official communications.</p>
+                <a href="https://discord.gg/2GyW9bfnun" class="discord-button" target="_blank">Join Our Discord Server</a>
             </div>
         </div>
     </section>
@@ -496,30 +1207,81 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Florida Office of Public Governance</h3>
-                    <p>Dedicated to serving the people of Florida through effective governance and justice administration.</p>
+                    <p>Dedicated to serving the people of Florida through effective governance, justice administration, and transparent operations.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/AboutUs">About Us</a></li>
-                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/About">Public Information</a></li>
-                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/Resources">Resources</a></li>
+                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/AboutUs"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/About"><i class="fas fa-newspaper"></i> Public Information</a></li>
+                        <li><a href="https://1stardev.github.io/Florida_Office_Public_Governance/Resources"><i class="fas fa-book"></i> Resources</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Information</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> (850) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@flgov.org</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Tallahassee, FL</li>
+                        <li><i class="fab fa-discord"></i> Department Discord Server</li>
+                        <li><i class="fas fa-info-circle"></i> Primary communication channel</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Tallahassee, Florida</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Florida Office of Public Governance. All rights reserved.
+                &copy; 2023 Florida Office of Public Governance. All rights reserved. | This is a roleplay community website.
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // Add animation classes to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            const animatedElements = document.querySelectorAll('.feature-card, .service-card, .content-card, .testimonial, .faq-item, .partner-logo');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+            
+            // Add hover effect to feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
