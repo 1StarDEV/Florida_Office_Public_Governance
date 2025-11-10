@@ -371,6 +371,61 @@
             transform: translateY(-3px);
         }
         
+        /* Hierarchy Section */
+        .hierarchy-section {
+            margin: 40px 0;
+        }
+        
+        .hierarchy-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-left: 5px solid #9c27b0;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .hierarchy-box h3 {
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hierarchy-box h3 i {
+            margin-right: 10px;
+        }
+        
+        .hierarchy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .hierarchy-list li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ce93d8;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hierarchy-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hierarchy-rank {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #7b1fa2;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary-dark);
@@ -555,6 +610,7 @@
                     <!-- Quick Links -->
                     <div class="quick-links">
                         <a href="#general" class="quick-link"><i class="fas fa-question-circle"></i> General Questions</a>
+                        <a href="#hierarchy" class="quick-link"><i class="fas fa-sitemap"></i> Chain of Command</a>
                         <a href="#eligibility" class="quick-link"><i class="fas fa-user-check"></i> Eligibility</a>
                         <a href="#application" class="quick-link"><i class="fas fa-file-alt"></i> Application Process</a>
                         <a href="#review" class="quick-link"><i class="fas fa-search"></i> Review Process</a>
@@ -571,7 +627,7 @@
                                 <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                             </div>
                             <div class="faq-answer">
-                                <p>The Governor serves as the highest-ranking official in the Florida roleplay community, responsible for overseeing state operations, managing executive departments, signing legislation into law, and representing the community in official capacities.</p>
+                                <p>The Governor serves as the highest-ranking state official in the Florida roleplay community, responsible for overseeing state operations, managing executive departments, signing legislation into law, and representing the community in official capacities. The Governor reports directly to the State Executive Director.</p>
                             </div>
                         </div>
                         
@@ -591,7 +647,7 @@
                                 <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                             </div>
                             <div class="faq-answer">
-                                <p>If a Governor is inactive for more than 7 days without prior notice, they may be subject to removal proceedings. The Lieutenant Governor would assume temporary duties until a special election can be held or a replacement is appointed.</p>
+                                <p>If a Governor is inactive for more than 7 days without prior notice, they may be subject to removal proceedings. The State Executive Director (SED) would assume temporary duties and oversee the transition until a special election can be held or a replacement is appointed.</p>
                             </div>
                         </div>
                         
@@ -602,6 +658,53 @@
                             </div>
                             <div class="faq-answer">
                                 <p>Yes, you may apply for other positions simultaneously. However, if selected for multiple roles, you will need to choose which position to accept, as holding multiple high-ranking positions simultaneously is generally not permitted.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chain of Command -->
+                    <div class="faq-section" id="hierarchy">
+                        <h2 class="section-title"><i class="fas fa-sitemap"></i> Chain of Command</h2>
+                        
+                        <div class="hierarchy-box">
+                            <h3><i class="fas fa-crown"></i> Official Hierarchy</h3>
+                            <ul class="hierarchy-list">
+                                <li><span class="hierarchy-rank">1</span> County General (Highest Authority)</li>
+                                <li><span class="hierarchy-rank">2</span> State Executive Director (SED)</li>
+                                <li><span class="hierarchy-rank">3</span> Governor</li>
+                                <li><span class="hierarchy-rank">4</span> Lieutenant Governor</li>
+                                <li><span class="hierarchy-rank">5</span> State Department Heads</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-style: italic;">The County General holds authority above even the President of the United States in our roleplay hierarchy.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Who does the Governor report to?</h3>
+                                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The Governor reports directly to the State Executive Director (SED), who is one rank above the Governor in the chain of command. The SED oversees all state operations and has final approval on major gubernatorial decisions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is the role of the State Executive Director?</h3>
+                                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The State Executive Director (SED) is the highest-ranking official at the state level, overseeing all state operations, approving major decisions, and ensuring compliance with community standards. The SED reports directly to the County General.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Who has the final authority in our community?</h3>
+                                <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>The County General holds the highest authority in our roleplay community, with power extending above even the President of the United States in our hierarchy. All officials, including the State Executive Director and Governor, ultimately report to the County General.</p>
                             </div>
                         </div>
                     </div>
